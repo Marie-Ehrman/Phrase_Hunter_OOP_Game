@@ -41,18 +41,29 @@
     
     addPhraseToDisplay(){
         
-        // const lettersDiv = document.querySelector('div ul');
-        const phraseString = this.phrase.split();
+        const lettersUL = document.querySelector('#phrase ul');
 
-        phraseString.forEach( function(letter) {console.log(letter)} );
 
-            // if( letter !== ' '){
-            //     lettersDiv.appendChild(`<li class='hide letter${letter}>${letter}</li>`);
-            // } else {
-            //     lettersDiv.appendChild(`<li class="space"> </li>`);
-            // }
-            
+        [this.phrase].forEach( function(word) {
 
+            console.log(word);
+            word.split('').forEach(letter => {
+                
+                console.log(letter);
+                if ( letter !== " "){
+                const letterLI = document.createElement(`li`);
+                letterLI.className = `hide letter ${letter}`;
+                letterLI.textContent = letter;
+
+                lettersUL.appendChild(letterLI); 
+                } else    {
+                    const spaceLI = document.createElement(`li`);
+                    spaceLI.className = `space`;
+        
+                        lettersUL.appendChild(spaceLI);
+                }     
+            });
+        });
     }
 
 

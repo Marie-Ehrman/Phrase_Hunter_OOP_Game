@@ -29,7 +29,7 @@ document.getElementById('btn__reset').addEventListener('click', function () {
 //     console.log(`Phrase - phrase: `, phrase.phrase);
 //     };
 
-    // const game = new Game();
+//     const game = new Game();
 //     logPhrase(game.getRandomPhrase());
 //     logPhrase(game.getRandomPhrase());
 //     logPhrase(game.getRandomPhrase());
@@ -37,7 +37,5 @@ document.getElementById('btn__reset').addEventListener('click', function () {
 //     logPhrase(game.getRandomPhrase());
 
 const game = new Game();
-game
-.getRandomPhrase()
-// .addPhraseToDisplay()
-;
+game.getRandomPhrase().addPhraseToDisplay();
+
