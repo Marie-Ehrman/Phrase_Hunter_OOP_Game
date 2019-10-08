@@ -3,9 +3,12 @@
  * app.js */
 
 
+var game;
 
 document.getElementById('btn__reset').addEventListener('click', function () { 
     
+    game = new Game();
+    game.startGame();
     console.log('start button works');
 
 });
@@ -29,15 +32,16 @@ document.getElementById('btn__reset').addEventListener('click', function () {
 //     console.log(`Phrase - phrase: `, phrase.phrase);
 //     };
 
-    // const game = new Game();
+//     const game = new Game();
 //     logPhrase(game.getRandomPhrase());
 //     logPhrase(game.getRandomPhrase());
 //     logPhrase(game.getRandomPhrase());
 //     logPhrase(game.getRandomPhrase());
 //     logPhrase(game.getRandomPhrase());
 
-const game = new Game();
-game
-.getRandomPhrase()
-// .addPhraseToDisplay()
-;
+
+//TEST THE STARTGAME METHOD
+// const game = new Game();
+// game.startGame();
+// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+

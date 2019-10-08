@@ -18,13 +18,13 @@ class Game {
     */
     createPhrases(){
 
-        const phrases = [{phrase:`Be Here Now`},
-                         {phrase:`Celebrate all Success`}, 
-                         {phrase:`Communicate with Clarity`},
-                         {phrase:`Emotions Create Relatability`},
-                         {phrase:`Health is Wealth`},
-                         {phrase:`Love Your Fate`},
-                         {phrase:`Practice makes Permanent`}];
+        const phrases = [ new Phrase(`Be Here Now`),
+                          new Phrase(`Celebrate all Success`), 
+                          new Phrase(`Communicate with Clarity`),
+                          new Phrase(`Emotions Create Relatability`),
+                          new Phrase (`Health is Wealth`),
+                          new Phrase (`Love Your Fate`),
+                          new Phrase(`Practice makes Permanent`)];
     
         return phrases;
     }
@@ -36,6 +36,13 @@ class Game {
      */
     startGame(){
 
+        console.log('in start game');
+        document.getElementById('overlay').style.display = 'none';
+        
+        this.activePhrase = this.getRandomPhrase();
+        console.log(this.activePhrase);
+        this.activePhrase.addPhraseToDisplay();
+
 
     }
 
@@ -46,9 +53,8 @@ class Game {
     getRandomPhrase(){
 
         const random = Math.floor((Math.random() * this.phrases.length));
-        const randomPhrase = new Phrase(this.phrases[random].phrase);
-        console.log(randomPhrase.phrase.split(" "));
-        return randomPhrase.phrase;
+        // console.log(this.phrases[random]);
+        return this.phrases[random];
 
     }
 
@@ -71,11 +77,19 @@ class Game {
     }
 
     /**
-     * check to see if player has revealed all letters of the active phrase
+     * Checks for winning move
+     * @return {boolean} True if game is won, flase if game wasn't won
      */
     checkForWin(){
 
-
+        console.log(document.getElementsByClassName('hide'));
+        
+        if(document.getElementsByClassName('hide').length !== 0)
+        { return false; 
+        }
+        else { 
+            return true;
+        }  
     }
 
     /**

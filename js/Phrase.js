@@ -2,7 +2,7 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 
- class Phrase {
+class Phrase {
 
     constructor(phrase){
 
@@ -31,7 +31,6 @@
                             <li class="hide letter u">u</li>
                         </ul>
                     </div>
-
      ??*/
 
      /**
@@ -40,42 +39,62 @@
       **/
     
     addPhraseToDisplay(){
+        console.log('in addPhraseToDisplay');
+        console.log(this.phrase);
         
-        // const lettersDiv = document.querySelector('div ul');
-        const phraseString = this.phrase.split();
+        const lettersUL = document.querySelector('#phrase ul');
 
-        phraseString.forEach( function(letter) {console.log(letter)} );
 
-            // if( letter !== ' '){
-            //     lettersDiv.appendChild(`<li class='hide letter${letter}>${letter}</li>`);
-            // } else {
-            //     lettersDiv.appendChild(`<li class="space"> </li>`);
-            // }
-            
+        [this.phrase].forEach( function(word) {
 
+            word.split('').forEach(letter => {
+                
+                if ( letter !== " "){
+                const letterLI = document.createElement(`li`);
+                letterLI.className = `hide letter ${letter}`;
+                letterLI.textContent = letter;
+
+                lettersUL.appendChild(letterLI); 
+                } else    {
+                    const spaceLI = document.createElement(`li`);
+                    spaceLI.className = `space`;
+        
+                        lettersUL.appendChild(spaceLI);
+                }     
+            });
+        });
     }
 
 
     /**
      *  checks to see if the letter selected by the player matches
      *  a letter in the phrase.
+     * @param (string) letter
      **/
 
-    checkLetter(){
+    checkLetter(letter){
 
-
+        return this.phrase.includes(letter);
 
     }
 
 
     /**
      *  reveals the letter on the board that matches the player's selection 
+     * @param (string) letter
      **/
 
-    showMatchedLetter(){
+    showMatchedLetter(letter){
+
+            document.querySelectorAll(`.${letter}`)
+            .forEach( element => element.className = `show letter ${letter}`);
+            
+            }
 
 
 
-    }
 
- }
+
+
+
+}
