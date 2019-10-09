@@ -47,8 +47,10 @@ class Phrase {
 
         [this.phrase].forEach( function(word) {
 
+            console.log(word);
             word.split('').forEach(letter => {
                 
+                console.log(letter);
                 if ( letter !== " "){
                 const letterLI = document.createElement(`li`);
                 letterLI.className = `hide letter ${letter}`;
