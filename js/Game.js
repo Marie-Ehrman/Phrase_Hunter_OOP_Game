@@ -69,10 +69,26 @@ class Game {
     }
 
     /**
-     * removes a life from scoreboard
+     * removes a life from scoreboard, increase value of this.missed, and check if 
+     * game is over or not depending on remaingin lives
      */
     removeLife(){
 
+        
+        let heart = document.querySelector('img', 'src=images/liveHeart.png');
+        console.log(heart);
+        this.missed ++;
+
+        // heart.removeAttribute('src', 'images/liveHeart.png');
+        heart.setAttribute('src', 'images/lostHeart.png');
+
+        console.log(heart);
+
+        console.log(this.missed);
+
+        if ( this.missed === 5) {
+             this.gameOver(false);
+        }
 
     }
 
@@ -83,7 +99,7 @@ class Game {
     checkForWin(){
 
         console.log(document.getElementsByClassName('hide'));
-        
+
         if(document.getElementsByClassName('hide').length !== 0)
         { return false; 
         }
@@ -94,9 +110,28 @@ class Game {
 
     /**
      * displays start screen overlay and lets player know they won or lost
+     * @param {boolean}  gameWon - whether or not user won or lost
      */
-    gameOver(){
+    gameOver(gameWon){
 
+        const gameOverMSG = document.getElementById('game-over-message');
+        const overlay = document.getElementById('overlay');
+
+        if (gameWon){
+        
+            overlay.className = 'win';
+            overlay.style.display = 'block';
+            gameOverMSG.textContent = `Awesome job! Want to play again?`;
+           
+
+        } else {
+
+            overlay.className = 'lose';
+            overlay.style.display = 'block';
+            gameOverMSG.textContent = `Sorry, better luck next time! Want to play again?`;
+
+
+        }
 
     }
     
