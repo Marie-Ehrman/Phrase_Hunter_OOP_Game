@@ -74,17 +74,16 @@ class Game {
      */
     removeLife(){
 
-        
-        let heart = document.querySelector('img', 'src=images/liveHeart.png');
-        console.log(heart);
         this.missed ++;
 
-        // heart.removeAttribute('src', 'images/liveHeart.png');
-        heart.setAttribute('src', 'images/lostHeart.png');
+        let hearts = document.querySelectorAll('img', 'src=images/liveHeart.png');
+        
+        hearts.forEach( img => 
 
-        console.log(heart);
-
-        console.log(this.missed);
+            hearts[this.missed - 1]
+            .setAttribute('src', 'images/lostHeart.png')
+            
+        );
 
         if ( this.missed === 5) {
              this.gameOver(false);
