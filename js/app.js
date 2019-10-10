@@ -7,41 +7,37 @@ var game;
 
 document.getElementById('btn__reset').addEventListener('click', function () { 
     
-    game = new Game();
-    game.startGame();
-    console.log('start button works');
+    
+
+        //clear li's for game replayability 
+        //(ending up with this one line took my like 2 hours XD )
+        document.querySelectorAll('#phrase li').forEach(li => li.parentNode.removeChild(li));
+
+        //reset the key buttons for game replayability
+        document.querySelectorAll('.keyrow').forEach(row => {
+
+                document.querySelectorAll('button').forEach(button => {
+                    button.disabled = false;
+                    button.className = 'key';
+                 });
+        });
+
+        //reset live hearts for replayability
+        document.querySelectorAll('.tries')
+                .forEach( li => li.firstElementChild
+                .setAttribute('src', 'images/liveHeart.png'));
+
+        //start new game             
+        game = new Game();
+        game.startGame();
 
 });
 
+//listen for keyboard clicks to handle the game interactivity
+document.getElementById('qwerty').addEventListener('click', function (e) {
 
+        if ( e.target.className === 'key'){
+                game.handleInteraction(e.target);
+        }
 
-
-//TEST OUT CLASSES
-
-//TEST CREATEPHRASES METHOD
-
-// const game = new Game();
-// game.phrases.forEach((phrase, index) => {
-// const toLower = new Phrase(phrase.phrase);
-// console.log(`Phrase ${index} - phrase: ${toLower.phrase}`);
-// });
-
-//TEST GETRANDOMPHRASE
-
-// const logPhrase = (phrase) => {
-//     console.log(`Phrase - phrase: `, phrase.phrase);
-//     };
-
-//     const game = new Game();
-//     logPhrase(game.getRandomPhrase());
-//     logPhrase(game.getRandomPhrase());
-//     logPhrase(game.getRandomPhrase());
-//     logPhrase(game.getRandomPhrase());
-//     logPhrase(game.getRandomPhrase());
-
-
-//TEST THE STARTGAME METHOD
-// const game = new Game();
-// game.startGame();
-// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
-
+});

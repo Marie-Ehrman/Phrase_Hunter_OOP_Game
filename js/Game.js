@@ -12,21 +12,23 @@ class Game {
         this.activePhrase = 'null';
 
     }
+
+
     /**
     * Creates phrases for use in game
     * @return {array} An array of phrases that could be used in the game
     */
     createPhrases(){
 
-        const phrases = [ new Phrase(`Be Here Now`),
-                          new Phrase(`Celebrate all Success`), 
-                          new Phrase(`Communicate with Clarity`),
-                          new Phrase(`Emotions Create Relatability`),
-                          new Phrase (`Health is Wealth`),
-                          new Phrase (`Love Your Fate`),
-                          new Phrase(`Practice makes Permanent`)];
-    
-        return phrases;
+            const phrases = [ new Phrase(`Be Here Now`),
+                            new Phrase(`Celebrate all Success`), 
+                            new Phrase(`Communicate with Clarity`),
+                            new Phrase(`Emotions Create Relatability`),
+                            new Phrase (`Health is Wealth`),
+                            new Phrase (`Love Your Fate`),
+                            new Phrase(`Practice makes Permanent`)];
+        
+            return phrases;
     }
 
     
@@ -36,12 +38,14 @@ class Game {
      */
     startGame(){
 
-        console.log('in start game');
-        document.getElementById('overlay').style.display = 'none';
-        
-        this.activePhrase = this.getRandomPhrase();
-        console.log(this.activePhrase);
-        this.activePhrase.addPhraseToDisplay();
+
+            //get rid of the Start screen overlay
+            document.getElementById('overlay').style.display = 'none';
+            
+            //retrieve a random phrase
+            this.activePhrase = this.getRandomPhrase();
+            //add phrase to the screen
+            this.activePhrase.addPhraseToDisplay();
 
 
     }
@@ -52,20 +56,33 @@ class Game {
     */
     getRandomPhrase(){
 
-        const random = Math.floor((Math.random() * this.phrases.length));
-        // console.log(this.phrases[random]);
-        return this.phrases[random];
+            const random = Math.floor((Math.random() * this.phrases.length));
+            return this.phrases[random];
 
     }
 
     /**
-     * checks to see if button clicked matches a letter in the phrase 
-     * then handles that guess based on its correctness and disables that letter
-     * on the screen keyboard. if wrong remove a life
-     */
-    handleInteraction(){
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
+    handleInteraction(button){
+
+            button.disabled = true;
+            console.log(button);
+
+            if( !this.activePhrase.checkLetter(button.textContent) ) {
+                    button.className = 'wrong';
+                    game.removeLife();
+            } else {
+                    button.className = 'chosen';
+                    this.activePhrase.showMatchedLetter(button.textContent);
+                    if( this.checkForWin()){
+                            this.gameOver(this.checkForWin);
+                    }
+            }
 
 
+        
     }
 
     /**
@@ -74,37 +91,38 @@ class Game {
      */
     removeLife(){
 
-        this.missed ++;
+            //add one point to the missed counter
+            this.missed ++;
 
-        let hearts = document.querySelectorAll('img', 'src=images/liveHeart.png');
-        
-        hearts.forEach( img => 
-
-            hearts[this.missed - 1]
-            .setAttribute('src', 'images/lostHeart.png')
+            //select all heart images
+            let hearts = document.querySelectorAll('img', 'src=images/liveHeart.png');
             
-        );
+            hearts.forEach( img => 
 
-        if ( this.missed === 5) {
-             this.gameOver(false);
-        }
+                //for each img, for the heart in the current missed position set it to lost
+                hearts[this.missed - 1]
+                .setAttribute('src', 'images/lostHeart.png')
+                
+            );
+
+            if ( this.missed === 5) {
+                this.gameOver(false);
+            }
 
     }
 
+
     /**
      * Checks for winning move
-     * @return {boolean} True if game is won, flase if game wasn't won
+     * @return {boolean} True if game is won, false if game wasn't won
      */
     checkForWin(){
 
-        console.log(document.getElementsByClassName('hide'));
-
-        if(document.getElementsByClassName('hide').length !== 0)
-        { return false; 
-        }
-        else { 
-            return true;
-        }  
+            if (document.querySelectorAll('.hide').length !== 0) { 
+                return false; 
+            } else { 
+                return true;
+            }  
     }
 
     /**
@@ -113,16 +131,18 @@ class Game {
      */
     gameOver(gameWon){
 
+        //select DOM elements
         const gameOverMSG = document.getElementById('game-over-message');
         const overlay = document.getElementById('overlay');
 
+        //if game won is true, create a win message overlay
         if (gameWon){
         
             overlay.className = 'win';
             overlay.style.display = 'block';
             gameOverMSG.textContent = `Awesome job! Want to play again?`;
            
-
+        //if game is lost, create a lose message overlay
         } else {
 
             overlay.className = 'lose';
