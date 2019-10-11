@@ -49,6 +49,7 @@ class Phrase {
      *  checks to see if the letter selected by the player matches
      *  a letter in the phrase.
      * @param (string) letter
+     * @return {boolean} true if phrase includes letter, false if not
      **/
 
     checkLetter(letter){
@@ -61,6 +62,7 @@ class Phrase {
     /**
      *  reveals the letter on the board that matches the player's selection 
      * @param (string) letter
+     * 
      **/
 
     showMatchedLetter(letter){

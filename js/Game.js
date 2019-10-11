@@ -20,13 +20,15 @@ class Game {
     */
     createPhrases(){
 
-            const phrases = [ new Phrase(`Be Here Now`),
-                            new Phrase(`Celebrate all Success`), 
-                            new Phrase(`Communicate with Clarity`),
-                            new Phrase(`Emotions Create Relatability`),
-                            new Phrase (`Health is Wealth`),
-                            new Phrase (`Love Your Fate`),
-                            new Phrase(`Practice makes Permanent`)];
+            const phrases = [ 
+                new Phrase(`Be Here Now`),
+                new Phrase(`Celebrate all Success`), 
+                new Phrase(`Communicate with Clarity`),
+                new Phrase(`Emotions Create Relatability`),
+                new Phrase (`Health is Wealth`),
+                new Phrase (`Love Your Fate`),
+                new Phrase(`Practice makes Permanent`)
+            ];
         
             return phrases;
     }
