@@ -68,7 +68,6 @@ class Game {
     handleInteraction(button){
 
             button.disabled = true;
-            console.log(button);
 
             if( !this.activePhrase.checkLetter(button.textContent) ) {
                     button.className = 'wrong';

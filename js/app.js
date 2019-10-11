@@ -5,7 +5,7 @@
 
 var game;
 
-document.getElementById('btn__reset').addEventListener('click', function () { 
+$('#btn__reset').on('click', function () { 
     
     
 
@@ -34,10 +34,24 @@ document.getElementById('btn__reset').addEventListener('click', function () {
 });
 
 //listen for keyboard clicks to handle the game interactivity
-document.getElementById('qwerty').addEventListener('click', function (e) {
+
+
+$('#qwerty button').on('click',  function (e) {
 
         if ( e.target.className === 'key'){
                 game.handleInteraction(e.target);
         }
 
+});
+
+$(this).on('keyup', function (event) {
+
+    document.querySelectorAll('#qwerty button').forEach( 
+        button => {
+                
+            if( button.textContent === event.key ){
+                game.handleInteraction(button);
+            }
+
+        });
 });
