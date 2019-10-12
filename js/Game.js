@@ -41,7 +41,7 @@ class Game {
     startGame(){
 
 
-            //get rid of the Start screen overlay
+            //hide of the Start screen overlay
             document.getElementById('overlay').style.display = 'none';
             
             //retrieve a random phrase
@@ -69,11 +69,16 @@ class Game {
     */
     handleInteraction(button){
 
+            //set button to disabled so it cannot be selected again
             button.disabled = true;
 
+            //if phrase doesn't contain the letter, call "wrong" functionality
+            // on it
             if( !this.activePhrase.checkLetter(button.textContent) ) {
                     button.className = 'wrong';
                     game.removeLife();
+            //otherwise mark it as right and reveal the letters in the phrase
+            //then check if game has been won
             } else {
                     button.className = 'chosen';
                     this.activePhrase.showMatchedLetter(button.textContent);
@@ -106,34 +111,12 @@ class Game {
                 
             );
 
+            //if  all 5 lives have been used, end the game with a loss
             if ( this.missed === 5) {
                 this.gameOver(false);
             }
 
     }
-
-
-//     removeLife(){
-
-//         //add one point to the missed counter
-//         this.missed ++;
-
-//         //select all heart images
-//         const $hearts = $('.tries img');
-//         console.log($hearts);
-        
-//         let $lostHeart = $hearts.eq(this.missed - 1);
-//         console.log($lostHeart);
-
-//                 //for each img, for the heart in the current missed position set it to lost
-//                 $lostHeart.slideUp(1000);
-//                 $lostHeart.attr('src', 'images/lostHeart.png');
-
-//         if ( this.missed === 5) {
-//             this.gameOver(false);
-//         }
-
-//      }
 
 
     /**

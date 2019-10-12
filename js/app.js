@@ -3,17 +3,11 @@
  * app.js */
 
 
-
-//style the sheet
-
-// //Game Header
+// //Game Header font color change
 $('.header').css('color','#3a3f58');
 
 
-
-
 //set up a game
-
  var game;
 
 $('#btn__reset').on('click', function () { 
@@ -44,9 +38,9 @@ $('#btn__reset').on('click', function () {
 
 });
 
+
+
 //listen for keyboard clicks to handle the game interactivity
-
-
 $('#qwerty button').on('click',  function (e) {
 
         if ( e.target.className === 'key'){
@@ -55,6 +49,7 @@ $('#qwerty button').on('click',  function (e) {
 
 });
 
+//listener for computer key presses to handle game interactivity
 $(this).on('keyup', function (event) {
 
     document.querySelectorAll('#qwerty button').forEach( 

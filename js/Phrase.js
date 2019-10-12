@@ -67,16 +67,12 @@ class Phrase {
 
     showMatchedLetter(letter){
 
+            //select all elements that match the class of the letter
+            //then loop through and change class from hide to show
             document.querySelectorAll(`.${letter}`)
             .forEach( element => 
                 element.className = `show letter ${letter}`);
             
     }
-
-
-
-
-
-
 
 }
