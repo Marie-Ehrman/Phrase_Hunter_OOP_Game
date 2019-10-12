@@ -13,17 +13,18 @@
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
   --font-size-medium: 20px;
-  --transition: all .2s ease-in-out;
+  --transition: all .5s ease-in-out;
 }
 
 /* main */
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Georgia', serif;
 }
 
 body {
+  background-color: lightcyan;
   justify-content: space-evenly;
   flex-direction: column;
   display: flex;
@@ -111,7 +112,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #c48ef7;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -131,15 +132,17 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: #9ae4a4;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
 
 .wrong {
-  background: #f7a964;
+  background: #f86957;
   color: #FFFFFF;
+  /* transform: rotate(360deg); */
+
 }
 
 .btn__reset {
@@ -149,8 +152,8 @@ button {
   border-radius: 5px;
   font-size: 20px;
   cursor: pointer;
-  border-bottom: solid 4px rgba(0, 0, 0, .3);
-  border-right: solid 3px rgba(0, 0, 0, .3)
+  border-bottom: solid 5px rgba(0, 0, 0, .3);
+  border-right: solid 4px rgba(0, 0, 0, .3)
 }
 
 .btn__reset:active {
@@ -180,11 +183,11 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #596777;
 }
 
 .start a {
-  color: #fff;
+  color: rgb(240, 202, 202);
 }
 
 .win {
@@ -197,8 +200,13 @@ button {
 
 .lose {
   background-color: #f5785f;
+  animation: shake 0.5s;
 }
 
 .lose a {
   color: var(--color-lose);
+}
+
+.tries {
+  transition: var(--transition);
 }
