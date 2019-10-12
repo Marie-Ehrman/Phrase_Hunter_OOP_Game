@@ -5,15 +5,9 @@
 
 
 //style the sheet
-//DOC
-$('*').css('font-family', 'Georgia');
-//Start screen Overlay
-$('#overlay').css('background-color', '#f0e3fa');
-$('#overlay').css('background-color', '#f0e3fa');
-//Body
-$('body').css('background-color', '#d1bed1');
-//Game Header
-$('.header').css('color','#e0fffd');
+
+// //Game Header
+$('.header').css('color','#3a3f58');
 
 
 

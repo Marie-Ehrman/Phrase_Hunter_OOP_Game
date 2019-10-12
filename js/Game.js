@@ -113,6 +113,29 @@ class Game {
     }
 
 
+//     removeLife(){
+
+//         //add one point to the missed counter
+//         this.missed ++;
+
+//         //select all heart images
+//         const $hearts = $('.tries img');
+//         console.log($hearts);
+        
+//         let $lostHeart = $hearts.eq(this.missed - 1);
+//         console.log($lostHeart);
+
+//                 //for each img, for the heart in the current missed position set it to lost
+//                 $lostHeart.slideUp(1000);
+//                 $lostHeart.attr('src', 'images/lostHeart.png');
+
+//         if ( this.missed === 5) {
+//             this.gameOver(false);
+//         }
+
+//      }
+
+
     /**
      * Checks for winning move
      * @return {boolean} True if game is won, false if game wasn't won
